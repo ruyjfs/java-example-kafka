@@ -1,0 +1,22 @@
+{
+  "fields": [
+    {
+      "name": "name",
+      "type": {
+        "avro.java.string": "String",
+        "type": "string"
+      }
+    },
+    {
+      "name": "age",
+      "type": {
+        "avro.java.string": "Integer",
+        "type": "int"
+      }
+    }
+  ],
+  "name": "User",
+  "namespace": "com.github.ruyjfs.examplejavakafka",
+  "type": "record"
+//  "aliases": ["LinkedLongs"],
+}

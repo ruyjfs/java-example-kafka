@@ -1,0 +1,35 @@
+server:
+  port: 9090
+custom:
+  kafka:
+    group-id: group-user # If more than one group-id
+    topics:
+      user-created: topic-user-created
+      user-updated: topic-user-updated
+      user-changedPassword: topic-user-changedPassword
+      user-deleted: topic-user-deleted
+      user-all: topic-user-all
+
+spring:
+  kafka:
+    listener:
+      ack-mode: MANUAL_IMMEDIATE
+    properties:
+      schema:
+        registry:
+          url: http://localhost:8085
+    bootstrap-servers: localhost:29092
+    consumer:
+      ack-mode: manual
+      # bootstrap-servers: localhost:9092 # If diferente of producer put here...
+      # group-id: group-user
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+    producer:
+      # bootstrap-servers: localhost:9092 # If diferente of consumer put here...
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+

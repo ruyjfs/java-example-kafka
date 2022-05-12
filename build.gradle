@@ -1,0 +1,52 @@
+plugins {
+	id "idea"
+	id "com.github.davidmc24.gradle.plugin.avro" version "1.2.0"
+	id 'org.springframework.boot' version '2.6.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.github.ruyjfs.examplejavakafka'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	gradlePluginPortal()
+	mavenCentral()
+
+	maven {
+		url "https://packages.confluent.io/maven"
+	}
+}
+
+
+dependencies {
+	implementation "io.confluent:kafka-avro-serializer:6.1.0"
+	implementation 'org.apache.avro:avro:1.10.2'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.kafka:spring-kafka'
+	// implementation 'io.confluent:kafka-avro-serializer'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.kafka:spring-kafka-test'
+}
+//
+//generateAvroJava {
+//	source("${projectDir}/src/main/resources/avro")//sourcepath avrofile
+//}
+//
+//tasks.named("generateAvroJava") {
+//	generateAvroJava()
+//}
+tasks.named('test') {
+	useJUnitPlatform()
+}

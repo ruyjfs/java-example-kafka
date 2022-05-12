@@ -1,0 +1,24 @@
+server:
+  port: 9090
+custom:
+  kafka:
+    group-id: group-user-local # If more than one group-id
+    topics:
+      user-created: topic-user-created-local
+      user-updated: topic-user-updated-local
+      user-changedPassword: topic-user-changePassword-local
+      user-deleted: topic-user-changePassword-local
+      user-all: topic-user-all-local
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      # bootstrap-servers: localhost:9092 # If diferente of producer put here...
+      group-id: group-user-local
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      # bootstrap-servers: localhost:9092 # If diferente of consumer put here...
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
