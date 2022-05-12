@@ -67,6 +67,8 @@ Apenas um comando
 
 ## Links
 
+- https://docs.confluent.io/platform/current/overview.html
+- https://avro.apache.org/docs/1.10.2/gettingstartedjava.html#Serializing+and+deserializing+with+code+generation
 - https://developer.confluent.io/learn-kafka/spring/hands-on-cloud-schema-registry/
 - https://github.com/davidmc24/gradle-avro-plugin/blob/master/README.md
 - https://docs.confluent.io/platform/current/schema-registry/connect.html

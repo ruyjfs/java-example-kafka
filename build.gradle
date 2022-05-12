@@ -27,10 +27,13 @@ repositories {
 
 
 dependencies {
+	implementation 'com.github.javafaker:javafaker:1.0.2'
 	implementation "io.confluent:kafka-avro-serializer:6.1.0"
 	implementation 'org.apache.avro:avro:1.10.2'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.kafka:spring-kafka'
+	implementation 'junit:junit:4.12'
+	implementation 'org.projectlombok:lombok:1.18.18'
 	// implementation 'io.confluent:kafka-avro-serializer'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'

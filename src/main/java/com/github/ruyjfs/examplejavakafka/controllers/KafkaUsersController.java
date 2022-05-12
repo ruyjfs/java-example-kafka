@@ -2,6 +2,7 @@ package com.github.ruyjfs.examplejavakafka.controllers;
 
 import com.github.ruyjfs.examplejavakafka.User;
 import com.github.ruyjfs.examplejavakafka.services.KafkaProducerService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

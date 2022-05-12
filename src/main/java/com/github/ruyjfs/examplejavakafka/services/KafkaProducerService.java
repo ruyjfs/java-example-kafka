@@ -1,6 +1,8 @@
 package com.github.ruyjfs.examplejavakafka.services;
 
 import com.github.ruyjfs.examplejavakafka.User;
+
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -10,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class KafkaProducerService {
 
   @Value("${custom.kafka.topics.user-created}")
@@ -24,10 +27,11 @@ public class KafkaProducerService {
   @Autowired
   private KafkaTemplate<Object, Object> kafkaTemplate;
 
-  public void create(User payload) {
+  public boolean create(User payload) {
     log.info("LOG -> status=START KafkaProducerService.create -> topic{}", TOPIC_USER_CREATED);
     kafkaTemplate.send(TOPIC_USER_CREATED, payload);
     log.info("LOG -> status=END KafkaProducerService.create -> payload={}", payload);
+    return true;
   }
 
   public void update(User payload) {
